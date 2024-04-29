@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+   <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+
+<body>
+   
+    <form id="register-form" action="/registeruser" method="post" onsubmit="return validateForm();">
+ <h1>User Registration</h1>
+ <div >
+        <input type="text" id="name" name="name" placeholder="Name" required><br><br>
+        <input type="email" id="email" name="email" placeholder="E-mail" required><br><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <input type="password" id="re_password" name="re_password" placeholder="Confirm Password" required><br><br>
+        <input type="text" id="address" name="address" placeholder="Address" required><br><br>
+        <input type="radio" name="gender" value="male" required>Male
+        <input type="radio" name="gender" value="female" required>Female<br><br>
+        <button type="submit">Register</button>
+</div>
+        <p th:text="${error}" class="error"></p>
+
+
+    <a href="/loginuser">Already have an account? Login</a>
+</form>
+    <script>
+        // Function to validate the sign-up form
+        function validateForm() {
+            // Get form elements
+            var nameInput = document.getElementById("name");
+            var emailInput = document.getElementById("email");
+            var passInput = document.getElementById("password");
+            var rePassInput = document.getElementById("re_password");
+
+            // Check name (minimum 3 characters)
+            if (nameInput.value.length < 3) {
+                alert("Name must be at least 3 characters long.");
+                nameInput.focus();
+                return false;
+            }
+
+            // Check password (minimum 8 characters, at least one symbol and one capital letter)
+            var passPattern = /^(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+            if (!passPattern.test(passInput.value)) {
+                alert("Password must be at least 8 characters long and contain a symbol and a capital letter.");
+                passInput.focus();
+                return false;
+            }
+
+            // Check if confirm password matches password
+            if (passInput.value !== rePassInput.value) {
+                alert("Confirm password does not match the password.");
+                rePassInput.focus();
+                return false;
+            }
+
+            //alert("Registration successful. You will now be redirected to the login page.");
+
+            return true; // Form submission will proceed if all validations pass
+        }
+
+        // Attach the validation function to the form submit event
+        document.getElementById("register-form").onsubmit = validateForm;
+    </script>
+</body>
+
+</html>

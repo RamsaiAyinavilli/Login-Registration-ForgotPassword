@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+       margin: 0;
+    padding: 0;
+    height: 100vh;
+   background-color: rgba(31, 72, 60, 0.788);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #011115;
+}
+
+th {
+    background-color:transparent;
+}
+
+a.button {
+    padding: 10px 15px;
+    background-color: rgba(31, 72, 60, 0.788);
+    color: rgb(48, 3, 3);
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    
+}
+
+    </style>
+</head>
+<body>
+    <div style="display: grid;">
+    <h2 >User List</h2>
+    
+
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <!-- <th>firstName</th>
+             <th>lastName</th> -->
+            <th>Email</th>
+             <th>Password</th>
+            <th>Address</th>
+            <th> gender</th>
+            <th>optional</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+                 <td th:text="${user.name}"></td>
+        <!--     <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td> -->
+            <td th:text="${user.email}"></td>
+             <td th:text="${user.password}"></td>
+             <td th:text="${user.address}"></td>
+             <td th:text="${user.gender}"></td>
+            <td >
+                <form action="/delete/{id}" method="post" th:action="@{/delete/{id}(id=${user.id})}">
+                    <input type="submit" value="Delete" style="background-color: transparent;">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div style="display: flex;">
+ <a href="/registeruser" class="button">Register New User</a>
+    <a href="/loginuser" class="button" style="margin-left: 10px;">Login</a>
+      <a href="/loginuser" class="button" style="margin-left: 10px;">Logout</a>
+    </div>
+    </div>
+</body>
+</html>

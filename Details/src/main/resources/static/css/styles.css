@@ -1,0 +1,85 @@
+@charset "ISO-8859-1";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: gray; 
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+   display: flex;
+   flex-direction: column;
+   width: 50vw;
+   height: 70vh;
+   margin: 10%;
+   box-sizing: border-box;
+   border-radius: 30px;
+   overflow: auto;
+   background-color: azure;
+   backdrop-filter: blur(8px);
+   align-items: center;
+}
+
+#register-form {
+    height: auto;
+    max-width: 50vw;
+    min-width: 35vw;
+    
+    text-wrap: balance;
+}
+
+input {
+    padding: 8px;
+    margin: 5px 0;
+    width: auto;
+    box-sizing: border-box;
+}
+
+button {
+    display: inline-flex;
+    padding: 10px;
+    margin-top: 10px;
+    width: auto;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: aliceblue;
+    color: #007BFF;
+}
+
+a {
+    margin-top: 0px;
+    padding: 2px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(3, 6, 28);
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
