@@ -10,4 +10,5 @@ import com.example.demo.entity.PasswordResetToken;
 public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
     
     Optional<PasswordResetToken> findByToken(String token);
+    List<PasswordResetToken> findAllByExpiryDateBefore(LocalDateTime now);
 }
