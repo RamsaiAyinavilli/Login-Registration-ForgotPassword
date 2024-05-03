@@ -1,5 +1,6 @@
-made Foreign key as cascade on update and on delete in database by 
-select schema
+made Foreign key as cascade on update and on delete in database
+
+-select schema(details)
 - table(passwors_reset_tokens)
 -settings-foreign keys
 -select foreignkey(FKk3ndxg5xp6v7wd4gjyusp15gq)
