@@ -22,8 +22,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    //@Autowired
-   // private PasswordEncoder passwordEncoder;
+
 @Autowired
     private PasswordResetService passwordResetService;
     
@@ -33,13 +32,7 @@ public class UserController {
         model.addAttribute("users", users);
         return "indexpage";
     }
-
-	
-	  @PostMapping("/user") 
-	  public String saveUser(User user) {
-	  userService.saveUser(user);
-	  return "redirect:/userdetails"; }
-	 
+ 
 
     @GetMapping("/registeruser")
     public String showRegistrationForm(Model model) {
@@ -74,13 +67,6 @@ public class UserController {
         return "loginpage";
     }
     
-    
-    @PostMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Integer id) {
-        userService.deleteUser(id);
-        return "redirect:/userdetails";
-    }
-  
 
     @PostMapping("/loginuser")
     public String loginUser(User user, Model model) {
@@ -92,7 +78,13 @@ public class UserController {
             return "loginpage";
         }
     }
-    
+
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+        return "redirect:/userdetails";
+    }
+  
     
     @GetMapping("/forgot-password")
     public String showForgotPasswordForm() {
